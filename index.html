@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>reveal-md</title>
+        <link rel="stylesheet" href="./css/reveal.css">
+        <link rel="stylesheet" href="./css/theme/black.css" id="theme">
+        <link rel="stylesheet" href="./css/highlight/zenburn.css">
+        <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print">
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">Herhalingsoef marp opgave
+
+# Wat zijn optionele parameters? 
+zie hoofdstuk 5.10
+Geef een voorbeeld!
+
+
+
+```
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            Berekening(0, 0,5);
+        }
+
+        static void Berekening(int x, int b , int c, 
+        int d = 20)
+        {
+            x = d + c ;
+            Console.WriteLine(x);
+        }
+    }
+    
+```</script></section><section  data-markdown><script type="text/template">
+# Wat is parameter-binding? 
+zie hoofdstuk 5.20
+Geef een voorbeeld!
+```
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int s;
+            int v;
+
+            Console.WriteLine(" geef het eerste getal in:" );
+            string getal1 = Console.ReadLine();
+            int convert1 = Convert.ToInt32(getal1);
+            Console.WriteLine(" geef het tweede getal in:");
+            string getal2 = Console.ReadLine();
+            int convert2 = Convert.ToInt32(getal2);
+
+            SomEnVerschil(convert1,convert2, out s, out v);
+        }
+        static void SomEnVerschil(int getal1, int getal2, out int som, out int verschil)
+        {
+
+             som = getal1 + getal2;
+            Console.WriteLine(" dit is de som: {0} ",som);
+             verschil = getal1 - getal2;
+            Console.WriteLine(" dit is het verschil: {0} ", verschil);
+        }
+    }
+```</script></section><section  data-markdown><script type="text/template">
+# Wat is method-overloading?
+zie hoofdstuk 5.22
+Geef een voorbeeld!
+```
+      class Program
+    {
+        static void Main(string[] args)
+        {
+            int c = 5;
+            int d = 4;
+            double g = 8.2;
+            double h = 2.5;
+
+            Swap(ref c, ref d);
+            Swap(ref g, ref h);
+        }
+        static void Swap(ref int a, ref int b)
+        {
+            int aCopy;
+            aCopy = a;
+            a = b;
+            b = aCopy;
+        }
+        static void Swap(ref double a, ref double b)
+        {
+            double aSafe = a;
+            double bSafe = b;
+            a = bSafe;
+            b = aSafe;
+        }
+    }
+        
+```</script></section><section  data-markdown><script type="text/template">
+# Hoe herken je in WPF event-handlers? 
+zie ook hoofdstuk 5.10
+Geef een voorbeeld!
+```
+ (object sender, RoutedEventArgs e)
+ 
+ Er staat object bij
+```</script></section><section  data-markdown><script type="text/template">
+# Waar moet je op letten bij b.v. de `AddYears()`-method van een `DateTime`-object?
+Geef een voorbeeld!
+```
+Je moet erop letten dat het optellen aangepast blijft.
+```</script></section><section  data-markdown><script type="text/template">
+# Als je een variabele niet initialiseert welke waarde heeft hij dan?
+Wees volledig!
+dan krijgt hij de waarde null(0).
+
+Geef verschillende voorbeelden!
+``` 
+> int x;
+> x
+0
+> Random r;
+> r
+null
+> string a;
+> a
+null
+> double c;
+> c
+0
+
+
+```</script></section><section  data-markdown><script type="text/template"></script></section></div>
+        </div>
+
+        <script src="./lib/js/head.min.js"></script>
+        <script src="./js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: './lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: './plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: './plugin/zoom-js/zoom.js', async: true },
+              { src: './plugin/notes/notes.js', async: true },
+              { src: './plugin/math/math.js', async: true }
+            ];
+
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default', // none/fade/slide/convex/concave/zoom
+              dependencies: deps
+            };
+
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+
+            var options = {};
+            options = extend(defaultOptions, options, queryOptions);
+        </script>
+
+
+        <script>
+            Reveal.initialize(options);
+        </script>
+    </body>
+</html>
